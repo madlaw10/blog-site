@@ -1,26 +1,25 @@
-package org.wecancodeit.blogsite.category;
+package org.wecancodeit.blogsite.models;
 
 import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
-import org.wecancodeit.blogsite.post.Post;
+import javax.persistence.ManyToMany;
 
 @Entity
-public class Category {
+public class Author {
 	
 	@Id
 	@GeneratedValue
 	private Long id;
 	private String name;
-	@OneToMany (mappedBy= "category")
+	@ManyToMany (mappedBy= "authors")
 	private Collection<Post> posts;
-	public Category() {}
 	
-	public Category(String name) {
+	public Author() {}
+	
+	public Author(String name) {
 		this.name = name;
 	}
 
@@ -33,7 +32,7 @@ public class Category {
 	}
 
 	public Collection<Post> getPosts() {
-	return posts;
+		return posts;
 	}
 
 	@Override

@@ -1,4 +1,4 @@
-package org.wecancodeit.blogsite.tag;
+package org.wecancodeit.blogsite;
 
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.when;
@@ -18,9 +18,9 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.wecancodeit.blogsite.tag.Tag;
-import org.wecancodeit.blogsite.tag.TagController;
-import org.wecancodeit.blogsite.tag.TagRepository;
+import org.wecancodeit.blogsite.controllers.TagController;
+import org.wecancodeit.blogsite.models.Tag;
+import org.wecancodeit.blogsite.repositories.TagRepository;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(TagController.class)

@@ -1,4 +1,4 @@
-package org.wecancodeit.blogsite.category;
+package org.wecancodeit.blogsite.controllers;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -11,6 +11,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.ui.Model;
+import org.wecancodeit.blogsite.controllers.CategoryController;
+import org.wecancodeit.blogsite.models.Category;
+import org.wecancodeit.blogsite.repositories.CategoryRepository;
 
 public class CategoryControllerTest {
 	

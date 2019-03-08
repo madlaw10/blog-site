@@ -1,4 +1,4 @@
-package org.wecancodeit.blogsite.tag;
+package org.wecancodeit.blogsite.controllers;
 
 import java.util.Optional;
 
@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.wecancodeit.blogsite.models.Tag;
+import org.wecancodeit.blogsite.repositories.TagRepository;
 
 @Controller
 @RequestMapping("/tags")

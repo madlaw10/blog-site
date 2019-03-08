@@ -1,4 +1,4 @@
-package org.wecancodeit.blogsite.tag;
+package org.wecancodeit.blogsite.controllers;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -11,6 +11,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.ui.Model;
+import org.wecancodeit.blogsite.models.Tag;
+import org.wecancodeit.blogsite.repositories.TagRepository;
 
 public class TagControllerTest {
 	

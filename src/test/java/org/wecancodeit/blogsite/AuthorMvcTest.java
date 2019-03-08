@@ -1,4 +1,4 @@
-package org.wecancodeit.blogsite.author;
+package org.wecancodeit.blogsite;
 
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.when;
@@ -18,9 +18,9 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.wecancodeit.blogsite.author.Author;
-import org.wecancodeit.blogsite.author.AuthorController;
-import org.wecancodeit.blogsite.author.AuthorRepository;
+import org.wecancodeit.blogsite.controllers.AuthorController;
+import org.wecancodeit.blogsite.models.Author;
+import org.wecancodeit.blogsite.repositories.AuthorRepository;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(AuthorController.class)
