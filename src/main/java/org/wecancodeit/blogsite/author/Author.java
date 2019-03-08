@@ -1,10 +1,16 @@
 package org.wecancodeit.blogsite.author;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
+
+
+import org.wecancodeit.blogsite.post.Post;
 
 @Entity
 public class Author {
@@ -13,12 +19,14 @@ public class Author {
 	@GeneratedValue
 	private Long id;
 	private String name;
-//	private Collection<Post> posts;
+	@ManyToMany 
+	private Collection<Post> posts;
 	
 	public Author() {}
 	
-	public Author(String name) {
+	public Author(String name, Post ...posts) {
 		this.name = name;
+		this.posts = Arrays.asList(posts);
 	}
 
 	public Long getId() {
@@ -29,14 +37,14 @@ public class Author {
 		return name;
 	}
 
-//	public Collection<Post> getPosts() {
-//		return posts;
-//	}
-//
-//	@Override
-//	public String toString() {
-//		return "name=" + name + ", posts=" + posts;
-//	}
+	public Collection<Post> getPosts() {
+		return posts;
+	}
+
+	@Override
+	public String toString() {
+		return "name=" + name + ", posts=" + posts;
+	}
 	
 	
 	

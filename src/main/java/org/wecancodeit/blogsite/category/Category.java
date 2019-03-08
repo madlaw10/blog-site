@@ -5,6 +5,9 @@ import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import org.wecancodeit.blogsite.post.Post;
 
 @Entity
 public class Category {
@@ -13,8 +16,8 @@ public class Category {
 	@GeneratedValue
 	private Long id;
 	private String name;
-//	private Collection<Post> posts;
-	
+	@OneToMany (mappedBy= "category")
+	private Collection<Post> posts;
 	public Category() {}
 	
 	public Category(String name) {
@@ -29,14 +32,14 @@ public class Category {
 		return name;
 	}
 
-//	public Collection<Post> getPosts() {
-//		return posts;
-//	}
-//
-//	@Override
-//	public String toString() {
-//		return "name=" + name + ", posts=" + posts;
-//	}
+	public Collection<Post> getPosts() {
+	return posts;
+	}
+
+	@Override
+	public String toString() {
+		return "name=" + name + ", posts=" + posts;
+	}
 	
 	
 	
