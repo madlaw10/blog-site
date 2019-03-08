@@ -1,6 +1,6 @@
-package org.wecancodeit.blogsite;
+package org.wecancodeit.blogsite.category;
 
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 import javax.annotation.Resource;
@@ -13,25 +13,26 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @DataJpaTest
-public class PostTest {
-
+public class CategoryTest {
+	
 	@Resource
 	private TestEntityManager entityManager;
 	
 	@Resource 
-	private PostRepository blogPostRepo;
+	private CategoryRepository categoryRepo;
 	
 	@Test
 	public void shouldLoadBlogPostByTitle() {
-		Post blogPost = blogPostRepo.save(new Post("Blog Post Title", "Blog Post Content"));
+		Category category = categoryRepo.save(new Category("test name"));
 		
-		entityManager.persist(blogPost);
+		entityManager.persist(category);
 		entityManager.flush();
 		entityManager.clear();
 		
-		Post blogPostFromDatabase =  blogPostRepo.findByTitle("Blog Post Title");
+		Category categoryFromDatabase =  categoryRepo.findByName("test name");
 		
-		assertThat(blogPostFromDatabase.getTitle(), is("Blog Post Title"));		
+		assertThat(categoryFromDatabase.getName(), is("test name"));		
 	}
+
 
 }

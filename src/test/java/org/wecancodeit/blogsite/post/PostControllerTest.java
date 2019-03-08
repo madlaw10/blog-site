@@ -1,7 +1,8 @@
-package org.wecancodeit.blogsite;
+package org.wecancodeit.blogsite.post;
 
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.util.Optional;
 
@@ -18,10 +19,10 @@ public class PostControllerTest {
 	private PostController underTest;
 	
 	@Mock
-	private PostRepository blogPostRepo;
+	private PostRepository postRepo;
 	
 	@Mock
-	private Post blogPost;
+	private Post post;
 	
 	@Mock
 	private Model model;
@@ -32,13 +33,13 @@ public class PostControllerTest {
 	}
 	
 	@Test
-	public void shouldAddBlogPostToModel() throws Exception {
-		Long blogPostId = 1L;
-		when(blogPostRepo.findById(blogPostId)).thenReturn(Optional.of(blogPost));
+	public void shouldAddPostToModel() throws Exception {
+		Long id = 1L;
+		when(postRepo.findById(id)).thenReturn(Optional.of(post));
 		
-		underTest.getBlogPost(blogPostId, model);
+		underTest.getPost(id, model);
 		
-		verify(model).addAttribute("blogPost", blogPost);
+		verify(model).addAttribute("post", post);
 	}
 
 }

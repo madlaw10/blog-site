@@ -1,4 +1,4 @@
-package org.wecancodeit.blogsite;
+package org.wecancodeit.blogsite.post;
 
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.when;
@@ -18,39 +18,42 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.wecancodeit.blogsite.post.Post;
+import org.wecancodeit.blogsite.post.PostController;
+import org.wecancodeit.blogsite.post.PostRepository;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(PostController.class)
-public class BlogPostMvcTest {
+public class PostMvcTest {
 
 	@Resource
 	private MockMvc mvc;
 
 	@MockBean
-	private PostRepository blogPostRepo;
+	private PostRepository postRepo;
 
 	@Mock
-	private Post blogPost;
+	private Post post;
 
 	@Test
 	public void shouldRouteToSingleBlogPostView() throws Exception {
-		Long blogPostId = 1L;
-		when(blogPostRepo.findById(blogPostId)).thenReturn(Optional.of(blogPost));
-		mvc.perform(get("/blog/1")).andExpect(view().name(is("blog-posts/single")));
+		Long id = 1L;
+		when(postRepo.findById(id)).thenReturn(Optional.of(post));
+		mvc.perform(get("/posts/post/1")).andExpect(view().name(is("posts/post-single")));
 	}
 
 	@Test
 	public void shouldBeOkForSingleBlogPost() throws Exception {
-		Long blogPostId = 1L;
-		when(blogPostRepo.findById(blogPostId)).thenReturn(Optional.of(blogPost));
-		mvc.perform(get("/blog/1")).andExpect(status().isOk());
+		Long id = 1L;
+		when(postRepo.findById(id)).thenReturn(Optional.of(post));
+		mvc.perform(get("/posts/post/1")).andExpect(status().isOk());
 	}
 
 	@Test
 	public void shouldPutSingleBlogPostIntoModel() throws Exception {
-		Long blogPostId = 1L;
-		when(blogPostRepo.findById(blogPostId)).thenReturn(Optional.of(blogPost));
-		mvc.perform(get("/blog/1")).andExpect(model().attribute("blogPost", is(blogPost)));
+		Long id = 1L;
+		when(postRepo.findById(id)).thenReturn(Optional.of(post));
+		mvc.perform(get("/posts/post/1")).andExpect(model().attribute("post", is(post)));
 	}
 
 }

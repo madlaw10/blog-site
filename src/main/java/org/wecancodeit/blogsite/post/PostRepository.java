@@ -1,4 +1,4 @@
-package org.wecancodeit.blogsite;
+package org.wecancodeit.blogsite.post;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
