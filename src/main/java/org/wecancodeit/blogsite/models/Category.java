@@ -1,27 +1,24 @@
-package org.wecancodeit.blogsite.tag;
+package org.wecancodeit.blogsite.models;
 
 import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-
-import org.wecancodeit.blogsite.post.Post;
+import javax.persistence.OneToMany;
 
 @Entity
-public class Tag {
+public class Category {
 	
 	@Id
 	@GeneratedValue
 	private Long id;
 	private String name;
-	@ManyToMany(mappedBy= "tags")
+	@OneToMany (mappedBy= "category")
 	private Collection<Post> posts;
+	public Category() {}
 	
-	public Tag() {}
-	
-	public Tag(String name) {
+	public Category(String name) {
 		this.name = name;
 	}
 
@@ -34,13 +31,16 @@ public class Tag {
 	}
 
 	public Collection<Post> getPosts() {
-		return posts;
+	return posts;
 	}
 
 	@Override
 	public String toString() {
 		return "name=" + name + ", posts=" + posts;
 	}
-
+	
+	
+	
+	
 
 }

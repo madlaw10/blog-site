@@ -1,4 +1,4 @@
-package org.wecancodeit.blogsite.post;
+package org.wecancodeit.blogsite.models;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -10,11 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-
-import org.wecancodeit.blogsite.author.Author;
-import org.wecancodeit.blogsite.category.Category;
-import org.wecancodeit.blogsite.tag.Tag;
-
 @Entity
 public class Post {
 
@@ -24,24 +19,22 @@ public class Post {
 	private String title;
 	private String body;
 	private LocalDateTime date;
-	@ManyToMany (mappedBy= "posts")
-	private Collection<Author> authors;
 	@ManyToOne
 	private Category category;
+	@ManyToMany
+	private Collection<Author> authors;
 	@ManyToMany
 	private Collection<Tag> tags;
 
 	public Post() {
 	}
 
-	public Post(String title, String body, Category category, Tag ...tags) {
+	public Post(String title, String body, Category category, Author ...authors) {
 		this.title = title;
 		this.body = body;
 		this.date = LocalDateTime.now();
-		this.category = category;
-		this.tags =Arrays.asList(tags);
-		
-		
+		this.category = category;	
+		this.authors = Arrays.asList(authors);	
 	}
 
 	public Long getId() {

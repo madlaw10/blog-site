@@ -1,4 +1,4 @@
-package org.wecancodeit.blogsite.post;
+package org.wecancodeit.blogsite;
 
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.when;
@@ -18,9 +18,9 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.wecancodeit.blogsite.post.Post;
-import org.wecancodeit.blogsite.post.PostController;
-import org.wecancodeit.blogsite.post.PostRepository;
+import org.wecancodeit.blogsite.controllers.PostController;
+import org.wecancodeit.blogsite.models.Post;
+import org.wecancodeit.blogsite.repositories.PostRepository;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(PostController.class)

@@ -1,4 +1,4 @@
-package org.wecancodeit.blogsite.post;
+package org.wecancodeit.blogsite.controllers;
 
 
 import static org.mockito.Mockito.verify;
@@ -12,6 +12,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.ui.Model;
+import org.wecancodeit.blogsite.models.Post;
+import org.wecancodeit.blogsite.repositories.PostRepository;
 
 public class PostControllerTest {
 	
