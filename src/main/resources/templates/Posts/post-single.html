@@ -21,16 +21,16 @@
     <main>
         <h1 th:text="${post.title}">Default Title</h1>
         <h2 th:text="${post.date}">Default Date</h2>
-        <h2 th:text="${post.category.name}">Default Category</h2>
+        <a th:text="${post.category.name}" th:href="@{|/categories/category/${post.category.id}|}">Default Category</a>
         <p th:text="${post.body}">Default Post</p>
         <ul>
             <li th:each="author : ${post.authors}">
-                <h2 th:text="${author.name}">Default Author</h2>
+                <a th:text="${author.name}" th:href="@{|/authors/author/${author.id}|}">Default Author</a>
             </li>
         </ul>
         <ul>
             <li th:each="tag : ${post.tags}">
-                <h2 th:text="${tag.name}">Default Tag</h2>
+                <a th:text="${tag.name}" th:href="@{|/tags/tag/${tag.id}|}">Default Tag</a>
             </li>
         </ul>
     </main>

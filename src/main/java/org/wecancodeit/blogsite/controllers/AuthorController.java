@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.wecancodeit.blogsite.models.Author;
-import org.wecancodeit.blogsite.models.Category;
 import org.wecancodeit.blogsite.repositories.AuthorRepository;
 
 @Controller
