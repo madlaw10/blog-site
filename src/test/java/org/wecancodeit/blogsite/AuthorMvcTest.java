@@ -57,4 +57,23 @@ public class AuthorMvcTest {
 			mvc.perform(get("/authors/author/1")).andExpect(model().attribute("author", is(author)));
 		}
 
+//		@Test
+//		public void shouldRouteToAllAuthorsView() throws Exception {
+//			when(authorRepo.findAll()).thenReturn(authorRepo.findAll());
+//			mvc.perform(get("/authors")).andExpect(view().name(is("authors/author-all")));
+//		}
+
+//		@Test
+//		public void shouldBeOkForSingleAuthor() throws Exception {
+//			Long id = 1L;
+//			when(authorRepo.findById(id)).thenReturn(Optional.of(author));
+//			mvc.perform(get("/authors/author/1")).andExpect(status().isOk());
+//		}
+//
+//		@Test
+//		public void shouldPutSingleAuthorIntoModel() throws Exception {
+//			Long id = 1L;
+//			when(authorRepo.findById(id)).thenReturn(Optional.of(author));
+//			mvc.perform(get("/authors/author/1")).andExpect(model().attribute("author", is(author)));
+//		}
 }

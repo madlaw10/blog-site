@@ -43,5 +43,13 @@ public class AuthorControllerTest {
 		
 		verify(model).addAttribute("author", author);
 	}
-
+	
+	@Test
+	public void shouldAddAllAuthorsToModel() {
+		underTest.getAllAuthors(model);
+		verify(model).addAttribute("authors", authorRepo.findAll());
+		
+		
+		
+	}
 }

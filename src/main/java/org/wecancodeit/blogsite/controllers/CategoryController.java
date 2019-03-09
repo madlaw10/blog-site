@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.wecancodeit.blogsite.models.Category;
 import org.wecancodeit.blogsite.repositories.CategoryRepository;
@@ -31,5 +32,23 @@ public class CategoryController {
 		return "categories/category-single";
 		
 	}
+	
+	@GetMapping("/")
+	public String getAllCategories(Model model) {
+		model.addAttribute("categories", categoryRepo.findAll());
+		return "categories/category-all";
+		
+		
+	}
 
+	@PostMapping("/")
+	public String addCategory(String name) {
+		Category categoryToAdd = categoryRepo.findByName(name);
+		if (categoryToAdd == null) {
+			categoryToAdd = categoryRepo.save(new Category(name));
+		}
+		
+		return "redirect:/categories/";
+		
+	}
 }

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Tag</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="single.css">
+
+</head>
+<body>
+        <nav>
+                <a href="/">Home</a>
+                <a href="/posts/">View All Posts</a>
+                <a href="/authors/">View All Authors</a>
+                <a href="/categories/">View All Categories</a>
+                <a href="/tags/">View All Tags</a>
+            </nav>
+         <main>
+             <h1 th:text="${tag.name}">Default Tag</h1>
+             <ul>
+                 <li th:each="post : ${tag.posts}">
+                     <h2 th:text="${post.title}">Default Title</h2>
+                     <p>
+                        <span th:text="${#strings.abbreviate(post.body,100)}">Default Body</span>
+                        <a th:text=" ' read more ' " th:href="@{|/posts/post/${post.id}|}"></a>
+                     </p>
+                 </li>
+             </ul>
+         </main> 
+         <footer>Copyright 2019</footer>  
+</body>
+</html>

@@ -43,5 +43,14 @@ public class CategoryControllerTest {
 		
 		verify(model).addAttribute("category", category);
 	}
+	
+	@Test
+	public void shouldAddAllCategoriesToModel() {
+		underTest.getAllCategories(model);
+		verify(model).addAttribute("categories", categoryRepo.findAll());
+		
+		
+		
+	}
 
 }

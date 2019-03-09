@@ -43,5 +43,14 @@ public class PostControllerTest {
 		
 		verify(model).addAttribute("post", post);
 	}
+	
+	@Test
+	public void shouldAddAllPostsToModel() {
+		underTest.getAllPosts(model);
+		verify(model).addAttribute("posts", postRepo.findAll());
+		
+		
+		
+	}
 
 }

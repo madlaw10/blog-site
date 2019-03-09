@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.wecancodeit.blogsite.models.Author;
 import org.wecancodeit.blogsite.models.Tag;
 import org.wecancodeit.blogsite.repositories.TagRepository;
 
@@ -30,5 +32,23 @@ public class TagController {
 
 			return "tags/tag-single";
 	}
+	
+	@GetMapping("/")
+	public String getAllTags(Model model) {
+		model.addAttribute("tags", tagRepo.findAll());
+		return "tags/tag-all";
+		
+		
+	}
 
+	@PostMapping("/")
+	public String addTag(String name) {
+		Tag tagToAdd = tagRepo.findByName(name);
+		if (tagToAdd == null) {
+			tagToAdd = tagRepo.save(new Tag(name));
+		}
+		
+		return "redirect:/tags/";
+		
+	}
 }

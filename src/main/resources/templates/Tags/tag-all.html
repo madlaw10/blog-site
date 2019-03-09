@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Tags</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="all.css">
+
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/posts/">View All Posts</a>
+        <a href="/authors/">View All Authors</a>
+        <a href="/categories/">View All Categories</a>
+        <a href="/tags/">View All Tags</a>
+    </nav>
+ <main>
+     <h1>Tags</h1>
+     <form action="/tags/" method="POST">
+        <input type="text" name="name" placeholder="Add a Tag">
+        <input type="submit" name="submit" value="submit">
+        </form>
+     <ul>
+         <li th:each="tag : ${tags}">
+             <a th:text="${tag.name}" th:href="@{|/tags/tag/${tag.id}|}">Default Tag</a>
+             
+         </li>
+     </ul>
+ </main> 
+ <footer>Copyright 2019</footer>  
+</body>
+</html>

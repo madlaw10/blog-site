@@ -10,12 +10,10 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.wecancodeit.blogsite.models.Author;
-import org.wecancodeit.blogsite.models.Category;
-import org.wecancodeit.blogsite.models.Post;
 import org.wecancodeit.blogsite.repositories.AuthorRepository;
 import org.wecancodeit.blogsite.repositories.CategoryRepository;
 import org.wecancodeit.blogsite.repositories.PostRepository;
+import org.wecancodeit.blogsite.repositories.TagRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @DataJpaTest
@@ -30,13 +28,16 @@ public class PostTest {
 	private CategoryRepository categoryRepo;
 	@Resource
 	private AuthorRepository authorRepo;
+	@Resource
+	private TagRepository tagRepo;
 
 	@Test
 	public void shouldLoadPostByTitle() {
 
 		Category category = categoryRepo.save(new Category("Category"));
 		Author author = authorRepo.save(new Author("Author"));
-		Post post = postRepo.save(new Post("Post Title", "Post Content", category, author));
+		Tag tag = tagRepo.save(new Tag("Tag Name"));
+		Post post = postRepo.save(new Post("Post Title", "Post Content", category, author, tag));
 
 		entityManager.persist(post);
 		entityManager.flush();
@@ -47,4 +48,29 @@ public class PostTest {
 		assertThat(blogPostFromDatabase.getTitle(), is("Post Title"));
 	}
 
+	@Test
+	public void shouldAddTagToTags() {
+
+		Category category = categoryRepo.save(new Category("Category"));
+		Author author = authorRepo.save(new Author("Author"));
+		Tag tag = tagRepo.save(new Tag("Tag Name"));
+		Post post = postRepo.save(new Post("Post Title", "Post Content", category, author, tag));
+		Tag tagToAdd = tagRepo.save(new Tag("Tag Name"));
+		post.addTagToTags(tagToAdd);
+		assertThat(post.getTags().contains(tagToAdd), is(true));
+
+	}
+
+	@Test
+	public void shouldAddAuthorToAuthors() {
+
+		Category category = categoryRepo.save(new Category("Category"));
+		Author author = authorRepo.save(new Author("Author"));
+		Tag tag = tagRepo.save(new Tag("Tag Name"));
+		Post post = postRepo.save(new Post("Post Title", "Post Content", category, author, tag));
+		Author testAuthor = authorRepo.save(new Author("Author Name"));
+		post.addAuthorToAuthors(testAuthor);
+		assertThat(post.getAuthors().contains(testAuthor), is(true));
+
+	}
 }

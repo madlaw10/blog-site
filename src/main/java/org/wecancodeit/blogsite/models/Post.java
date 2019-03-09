@@ -1,14 +1,18 @@
 package org.wecancodeit.blogsite.models;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+
+
 
 @Entity
 public class Post {
@@ -24,17 +28,20 @@ public class Post {
 	@ManyToMany
 	private Collection<Author> authors;
 	@ManyToMany
-	private Collection<Tag> tags;
+	private List<Tag> tags;
 
 	public Post() {
 	}
 
-	public Post(String title, String body, Category category, Author ...authors) {
+	public Post(String title, String body, Category category, Author author, Tag tag) {
 		this.title = title;
 		this.body = body;
-		this.date = LocalDateTime.now();
-		this.category = category;	
-		this.authors = Arrays.asList(authors);	
+		this.date = LocalDateTime.now(); 
+		this.category = category;
+		this.authors = Arrays.asList(author);
+		this.tags = Arrays.asList(tag);
+		
+		
 	}
 
 	public Long getId() {
@@ -61,14 +68,34 @@ public class Post {
 		return category;
 	}
 
-	public Collection<Tag> getTags() {
+	public List<Tag> getTags() {
 		return tags;
 	}
-
+	
+	public void addTagToTags(Tag tag) {
+		ArrayList<Tag> tags = new ArrayList<Tag>(this.getTags());
+		tags.add(tag);
+		this.tags = tags;
+		
+	}
+	
+	public void addAuthorToAuthors(Author author) {
+		ArrayList<Author> authors = new ArrayList<Author>(this.getAuthors());
+		authors.add(author);
+		this.authors = authors;
+		
+	}
+	
 	@Override
 	public String toString() {
 		return "title=" + title + ", body=" + body + ", date=" + date + ", authors=" + authors + ", category="
 				+ category + ", tags=" + tags;
 	}
+
+	
+
+	
+	
+	
 
 }

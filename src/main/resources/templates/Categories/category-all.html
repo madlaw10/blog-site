@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Categories</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="all.css">
+
+</head>
+
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/posts/">View All Posts</a>
+        <a href="/authors/">View All Authors</a>
+        <a href="/categories/">View All Categories</a>
+        <a href="/tags/">View All Tags</a>
+    </nav>
+    <main>
+        <h1>Categories</h1>
+        <form action="/categories/" method="POST">
+        <input type="text" name="name" placeholder="Add a Category">
+        <input type="submit" name="submit" value="submit">
+        </form>
+
+        <ul>
+            <li th:each="category : ${categories}">
+                <a th:text="${category.name}" th:href="@{|/categories/category/${category.id}|}">Default Category</a>
+
+            </li>
+        </ul>
+    </main>
+    <footer>Copyright 2019</footer>
+</body>
+
+</html>

@@ -43,4 +43,12 @@ public class TagControllerTest {
 		verify(model).addAttribute("tag", tag);
 	}
 
+	@Test
+	public void shouldAddAllTagsToModel() {
+		underTest.getAllTags(model);
+		verify(model).addAttribute("tags", tagRepo.findAll());
+		
+		
+		
+	}
 }
