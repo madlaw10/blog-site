@@ -22,7 +22,7 @@
  <main>
      <ul>
          <li th:each="post : ${author.posts}">
-             <h2 th:text="${post.title}">Default Title</h2>
+             <h3 th:text="${post.title}">Default Title</h3>
              <p>
                 <span th:text="${#strings.abbreviate(post.body,100)}">Default Body</span>
                 <a class="entities__links"th:text=" ' read more ' " th:href="@{|/posts/post/${post.id}|}"></a>

@@ -9,6 +9,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
@@ -21,6 +22,7 @@ public class Post {
 	@GeneratedValue
 	private Long id;
 	private String title;
+	@Lob
 	private String body;
 	private LocalDateTime date;
 	@ManyToOne
@@ -40,8 +42,6 @@ public class Post {
 		this.category = category;
 		this.authors = Arrays.asList(author);
 		this.tags = Arrays.asList(tag);
-		
-		
 	}
 
 	public Long getId() {
