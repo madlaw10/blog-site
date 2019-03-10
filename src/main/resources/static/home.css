@@ -11,6 +11,7 @@ a {
 
 body {
     background-color: #efe6e4;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -18,7 +19,7 @@ body {
 
 nav {
     margin-top: 45vh;
-    margin-bottom: 48vh;
+    margin-bottom: 45vh;
     display: flex;
     justify-content: center;
 }
@@ -39,6 +40,5 @@ footer {
     background-color: #0c1713;
     color: #eaf2ef;
     text-align: center;
-    bottom: 0;
 }
 
