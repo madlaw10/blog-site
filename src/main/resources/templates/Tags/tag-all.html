@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Tags</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/all.css">
+
+</head>
+<body>
+        <header>
+                <h1>Basic Blog: Tags</h1>
+            </header>
+    <nav>
+            <a class="nav__links"href="/">Home</a>
+            <a class="nav__links" href="/posts/">View All Posts</a>
+            <a class="nav__links"href="/authors/">View All Authors</a>
+            <a class="nav__links"href="/categories/">View All Categories</a>
+            <a class="nav__links"href="/tags/">View All Tags</a>
+    </nav>
+ <main>
+     
+     <form action="/tags/" method="POST">
+        <input type="text" name="name" placeholder="Add a Tag">
+        <input type="submit" name="submit" value="submit">
+        </form>
+        <h2>Existing Tags:</h2>
+     <ul>
+         <li th:each="tag : ${tags}">
+             <a class="entities__links"th:text="${tag.name}" th:href="@{|/tags/tag/${tag.id}|}">Default Tag</a>
+             
+         </li>
+     </ul>
+ </main> 
+ <footer>Copyright 2019</footer>  
+</body>
+</html>

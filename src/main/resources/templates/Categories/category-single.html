@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Category</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/single.css">
+
+</head>
+<body>
+        <header>
+                <h1>Basic Blog: <span th:text="${category.name}">Default Category</span></h1>
+         </header>
+        <nav>
+                <a class="nav__links"href="/">Home</a>
+                <a class="nav__links" href="/posts/">View All Posts</a>
+                <a class="nav__links"href="/authors/">View All Authors</a>
+                <a class="nav__links"href="/categories/">View All Categories</a>
+                <a class="nav__links"href="/tags/">View All Tags</a>
+            </nav>
+         <main>
+             <ul>
+                 <li th:each="post : ${category.posts}">
+                     <h3 th:text="${post.title}">Default Title</h3>
+                     <p>
+                        <span th:text="${#strings.abbreviate(post.body,100)}">Default Body</span>
+                        <a class="entities__links"th:text=" ' read more ' " th:href="@{|/posts/post/${post.id}|}"></a>
+                     </p>
+                 </li>
+             </ul>
+         </main> 
+         <footer>Copyright 2019</footer>  
+    
+</body>
+</html>

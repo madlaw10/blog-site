@@ -1,6 +1,6 @@
-package org.wecancodeit.blogsite;
+package org.wecancodeit.blogsite.models;
 
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 import javax.annotation.Resource;
@@ -10,28 +10,30 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.wecancodeit.blogsite.models.Tag;
+import org.wecancodeit.blogsite.repositories.TagRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @DataJpaTest
-public class PostTest {
-
+public class TagTest {
+	
 	@Resource
 	private TestEntityManager entityManager;
 	
 	@Resource 
-	private PostRepository blogPostRepo;
+	private TagRepository tagRepo;
 	
 	@Test
-	public void shouldLoadBlogPostByTitle() {
-		Post blogPost = blogPostRepo.save(new Post("Blog Post Title", "Blog Post Content"));
+	public void shouldLoadTagByTitle() {
+		Tag tag = tagRepo.save(new Tag("test name"));
 		
-		entityManager.persist(blogPost);
+		entityManager.persist(tag);
 		entityManager.flush();
 		entityManager.clear();
 		
-		Post blogPostFromDatabase =  blogPostRepo.findByTitle("Blog Post Title");
+		Tag tagFromDatabase =  tagRepo.findByName("test name");
 		
-		assertThat(blogPostFromDatabase.getTitle(), is("Blog Post Title"));		
+		assertThat(tagFromDatabase.getName(), is("test name"));		
 	}
 
 }
