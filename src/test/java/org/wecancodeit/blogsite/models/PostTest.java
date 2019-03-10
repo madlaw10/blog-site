@@ -53,10 +53,11 @@ public class PostTest {
 
 		Category category = categoryRepo.save(new Category("Category"));
 		Author author = authorRepo.save(new Author("Author"));
-		Tag tag = tagRepo.save(new Tag("Tag Name"));
+		Tag tag = tagRepo.save(new Tag("Tag One"));
 		Post post = postRepo.save(new Post("Post Title", "Post Content", category, author, tag));
-		Tag tagToAdd = tagRepo.save(new Tag("Tag Name"));
+		Tag tagToAdd = tagRepo.save(new Tag("Tag Two"));
 		post.addTagToTags(tagToAdd);
+		System.out.println(post.getTags());
 		assertThat(post.getTags().contains(tagToAdd), is(true));
 
 	}
@@ -65,11 +66,12 @@ public class PostTest {
 	public void shouldAddAuthorToAuthors() {
 
 		Category category = categoryRepo.save(new Category("Category"));
-		Author author = authorRepo.save(new Author("Author"));
+		Author author = authorRepo.save(new Author("Author One"));
 		Tag tag = tagRepo.save(new Tag("Tag Name"));
 		Post post = postRepo.save(new Post("Post Title", "Post Content", category, author, tag));
-		Author testAuthor = authorRepo.save(new Author("Author Name"));
+		Author testAuthor = authorRepo.save(new Author("Author Two"));
 		post.addAuthorToAuthors(testAuthor);
+		System.out.println(post.getAuthors());
 		assertThat(post.getAuthors().contains(testAuthor), is(true));
 
 	}

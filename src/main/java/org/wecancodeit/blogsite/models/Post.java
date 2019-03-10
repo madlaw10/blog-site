@@ -68,7 +68,7 @@ public class Post {
 		return category;
 	}
 
-	public List<Tag> getTags() {
+	public Collection<Tag> getTags() {
 		return tags;
 	}
 	
@@ -76,14 +76,12 @@ public class Post {
 		ArrayList<Tag> tags = new ArrayList<Tag>(this.getTags());
 		tags.add(tag);
 		this.tags = tags;
-		
 	}
 	
 	public void addAuthorToAuthors(Author author) {
 		ArrayList<Author> authors = new ArrayList<Author>(this.getAuthors());
 		authors.add(author);
 		this.authors = authors;
-		
 	}
 	
 	@Override

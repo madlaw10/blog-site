@@ -19,15 +19,38 @@
         <a href="/tags/">View All Tags</a>
     </nav>
     <main>
-        <h1 th:text="${post.title}">Default Title</h1>
-        <h2 th:text="${post.date}">Default Date</h2>
-        <a th:text="${post.category.name}" th:href="@{|/categories/category/${post.category.id}|}">Default Category</a>
+        <h1>Title: <span th:text="${post.title}">Default Title</span></h1>
+        <h2>Date Posted: <span th:text="${post.date}">Default Date</span></h2>
+        <h2>Category: <a th:text="${post.category.name}" th:href="@{|/categories/category/${post.category.id}|}">Default
+                Category</a></h2>
         <p th:text="${post.body}">Default Post</p>
+        <h2>Authors:</h2>
+        <form th:action="@{|/posts/post/${post.id}/author|}" method="POST">
+            <div th:object="${author}">
+                <select name="authorName">
+                    <option value="0">Select Author</option>
+                    <option th:each="author : ${authors}" th:value="${author.name}" th:text="${author.name}">Default
+                        Author</option>
+                </select>
+            </div>
+            <input type="submit" name="submit" value="submit">
+        </form>
         <ul>
             <li th:each="author : ${post.authors}">
                 <a th:text="${author.name}" th:href="@{|/authors/author/${author.id}|}">Default Author</a>
             </li>
         </ul>
+        <h2>Tags:</h2>
+        <form th:action="@{|/posts/post/${post.id}/tag|}" method="POST">
+            <div th:object="${tag}">
+                <select name="tagName">
+                    <option value="0">Select Tag</option>
+                    <option th:each="tag : ${tags}" th:value="${tag.name}" th:text="${tag.name}">Default
+                        Tag</option>
+                </select>
+            </div>
+            <input type="submit" name="submit" value="submit">
+        </form>
         <ul>
             <li th:each="tag : ${post.tags}">
                 <a th:text="${tag.name}" th:href="@{|/tags/tag/${tag.id}|}">Default Tag</a>

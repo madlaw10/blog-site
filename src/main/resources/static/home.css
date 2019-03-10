@@ -17,9 +17,13 @@ body {
     justify-content: space-between;
 }
 
+header {
+    padding: 1rem; 
+    background-color: #4ecdc4;
+    text-align: center;
+}
+
 nav {
-    margin-top: 45vh;
-    margin-bottom: 45vh;
     display: flex;
     justify-content: center;
 }
