@@ -8,6 +8,9 @@ a {
     text-decoration: none;
     color: black;
 }
+li {
+    list-style: none;
+}
 
 body {
     background-color: #efe6e4;
@@ -39,10 +42,17 @@ nav {
 .nav__links:hover {
     box-shadow: 1px 1px 1px #0c1713;
 }
-
-footer {
-    background-color: #0c1713;
-    color: #eaf2ef;
-    text-align: center;
+main{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 }
 
+    .entities__links:hover {
+        text-shadow: 1px 1px 1px #0c1713;
+    }
+    footer {
+        background-color: #0c1713;
+        color: #eaf2ef;
+        text-align: center;
+    }

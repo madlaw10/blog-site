@@ -6,50 +6,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Posts</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="all.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/all.css">
 
 </head>
 
 <body>
+        <header>
+                <h1>Basic Blog: Posts</h1>
+            </header>
     <nav>
-        <a href="/">Home</a>
-        <a href="/posts/">View All Posts</a>
-        <a href="/authors/">View All Authors</a>
-        <a href="/categories/">View All Categories</a>
-        <a href="/tags/">View All Tags</a>
+            <a class="nav__links"href="/">Home</a>
+            <a class="nav__links" href="/posts/">View All Posts</a>
+            <a class="nav__links"href="/authors/">View All Authors</a>
+            <a class="nav__links"href="/categories/">View All Categories</a>
+            <a class="nav__links"href="/tags/">View All Tags</a>
     </nav>
     <main>
-        <h1>Posts</h1>
+        
         <form action="/posts/" method="POST">
             <textarea name="body" placeholder="Add a Post"></textarea>
             <input type="text" name="title" placeholder="Give Your Post a Title!">
-            <div th:object="${category}">
+        <div class="form__drop-down-menus">    
+            <div class="form__drop-down-menus--single"th:object="${category}">
                 <select name="categoryName">
                     <option value="0">Select Category</option>
                     <option th:each="category : ${categories}" th:value="${category.name}" th:text="${category.name}">
                         Default Category</option>
                 </select>
             </div>
-            <div th:object="${author}">
+            <div class="form__drop-down-menus--single"th:object="${author}">
                 <select name="authorName">
                     <option value="0">Select Author</option>
                     <option th:each="author : ${authors}" th:value="${author.name}" th:text="${author.name}">Default
                         Author</option>
                 </select>
             </div>
-            <div th:object="${tag}">
+            <div class="form__drop-down-menus--single"th:object="${tag}">
                 <select name="tagName">
                     <option value="0">Select Tag</option>
                     <option th:each="tag : ${tags}" th:value="${tag.name}" th:text="${tag.name}">Default
                         Tag</option>
                 </select>
             </div>
+        </div>
             <input type="submit" name="submit" value="submit">
         </form>
-
+        <h2>Existing Posts:</h2>
         <ul>
             <li th:each="post : ${posts}">
-                <a th:text="${post.title}" th:href="@{|/posts/post/${post.id}|}">Default Post</a>
+                <a class="entities__links"th:text="${post.title}" th:href="@{|/posts/post/${post.id}|}">Default Post</a>
 
             </li>
         </ul>

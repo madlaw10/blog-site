@@ -6,27 +6,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Authors</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="all.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/all.css">
 
 </head>
 
 <body>
+        <header>
+                <h1>Basic Blog: Authors</h1>
+            </header>
     <nav>
-        <a href="/">Home</a>
-        <a href="/posts/">View All Posts</a>
-        <a href="/authors/">View All Authors</a>
-        <a href="/categories/">View All Categories</a>
-        <a href="/tags/">View All Tags</a>
+            <a class="nav__links"href="/">Home</a>
+            <a class="nav__links" href="/posts/">View All Posts</a>
+            <a class="nav__links"href="/authors/">View All Authors</a>
+            <a class="nav__links"href="/categories/">View All Categories</a>
+            <a class="nav__links"href="/tags/">View All Tags</a>
     </nav>
     <main>
-        <h1>Authors</h1>
+        
         <form action="/authors/" method="POST">
             <input type="text" name="name" placeholder="Add an Author">
             <input type="submit" name="submit" value="submit">
             </form>
+            <h2>Existing Authors:</h2>
         <ul>
             <li th:each="author : ${authors}">
-                <a th:text="${author.name}" th:href="@{|/authors/author/${author.id}|}">Default Author</a>
+                <a class="entities__links"th:text="${author.name}" th:href="@{|/authors/author/${author.id}|}">Default Author</a>
 
             </li>
         </ul>

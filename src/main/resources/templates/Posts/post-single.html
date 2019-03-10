@@ -6,22 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Post</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="post.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/single.css">
 
 </head>
 
 <body>
+        <header>
+                <h1>Basic Blog: <span th:text="${post.title}">Default Title</span></h1>
+         </header>
     <nav>
-        <a href="/">Home</a>
-        <a href="/posts/">View All Posts</a>
-        <a href="/authors/">View All Authors</a>
-        <a href="/categories/">View All Categories</a>
-        <a href="/tags/">View All Tags</a>
+            <a class="nav__links"href="/">Home</a>
+            <a class="nav__links" href="/posts/">View All Posts</a>
+            <a class="nav__links"href="/authors/">View All Authors</a>
+            <a class="nav__links"href="/categories/">View All Categories</a>
+            <a class="nav__links"href="/tags/">View All Tags</a>
     </nav>
     <main>
-        <h1>Title: <span th:text="${post.title}">Default Title</span></h1>
         <h2>Date Posted: <span th:text="${post.date}">Default Date</span></h2>
-        <h2>Category: <a th:text="${post.category.name}" th:href="@{|/categories/category/${post.category.id}|}">Default
+        <h2>Category: <a class="entities__links"th:text="${post.category.name}" th:href="@{|/categories/category/${post.category.id}|}">Default
                 Category</a></h2>
         <p th:text="${post.body}">Default Post</p>
         <h2>Authors:</h2>
@@ -37,7 +39,7 @@
         </form>
         <ul>
             <li th:each="author : ${post.authors}">
-                <a th:text="${author.name}" th:href="@{|/authors/author/${author.id}|}">Default Author</a>
+                <a class="entities__links"th:text="${author.name}" th:href="@{|/authors/author/${author.id}|}">Default Author</a>
             </li>
         </ul>
         <h2>Tags:</h2>
@@ -53,7 +55,7 @@
         </form>
         <ul>
             <li th:each="tag : ${post.tags}">
-                <a th:text="${tag.name}" th:href="@{|/tags/tag/${tag.id}|}">Default Tag</a>
+                <a class="entities__links"th:text="${tag.name}" th:href="@{|/tags/tag/${tag.id}|}">Default Tag</a>
             </li>
         </ul>
     </main>
